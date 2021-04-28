@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="messages")
@@ -21,7 +22,8 @@ public class Message {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String message;
+	@NotBlank(message="Message must not be blank!")
+	private String words;
 	
     @Column(updatable=false)
     private Date createdAt;
@@ -47,8 +49,8 @@ public class Message {
 	public Message() {
 	}	
 	
-	public Message(String message, User user, Event event) {
-		this.message = message;
+	public Message(String words, User user, Event event) {
+		this.words = words;
 		this.user = user;
 		this.event = event;
 	}
@@ -59,11 +61,11 @@ public class Message {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getMessage() {
-		return message;
+	public String getWords() {
+		return words;
 	}
-	public void setMessage(String message) {
-		this.message = message;
+	public void setWords(String words) {
+		this.words = words;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

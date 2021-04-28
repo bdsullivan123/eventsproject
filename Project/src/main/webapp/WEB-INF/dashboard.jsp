@@ -12,18 +12,31 @@
 		* {
 			margin: 0;
 			padding: 0;
+			color: #fbfbfb;
 		}
 		
 		body {
-			width: 950px;
+            background-image: linear-gradient(to right, #3a3a3a, #5f5f5f);
+		}
+		
+		header{
+			background-color: #2b2b2b;
+			padding-top: 10px;
+			padding-bottom: 10px;
 			margin: auto;
 		}
 		
-		header {
-			display: flex;
-			justify-content: space-between;
-			width: 80%;
-			margin: auto;
+		#logo {
+			border-radius: 15px;
+			width: 250px;
+  			display: block;
+  			margin-left: auto;
+  			margin-right: auto;
+  			margin-top: -35px;
+		}
+		
+		#error {
+			color: red;
 		}
 		
 		#table {
@@ -37,15 +50,29 @@
 			margin-left: 10%;
 		}
 		
-		#logout {
+		#logout_button {
 			text-align: right;
+			margin-right: 2%;
+		}
+		
+		#wrapper {
+			width: 970px;
+			margin: auto;
+			margin-top: 15px;
+			margin-bottom: 20px;
 		}
 	</style>
 </head>
 <body>
+	<header>
+		<div id="logout_button">
+			<a class="btn btn-secondary" href="/logout">Logout</a>
+		</div>
+		<img id="logo" src="/images/eventplannerlogo.png" alt="logo"/>
+	</header>
 	<div id="logout">
-		<a href="/logout">Logout</a>
 	</div>
+	<div id="wrapper">
 	<h1>Welcome, <c:out value="${user.firstName}"/>!</h1>
 	<br>
 	<h4>Here are some of the events in your state:</h4>
@@ -64,7 +91,7 @@
     	<tbody>
         	<c:forEach items="${instate}" var="instate">
         	<tr>
-            	<td><a href="/events/${instate.id}"><c:out value="${instate.name}"/></a></td>
+            	<td><a class="btn btn-secondary" href="/events/${instate.id}"><c:out value="${instate.name}"/></a></td>
             	<td><c:out value="${instate.date}"/></td>
             	<td><c:out value="${instate.location}"/></td>
             	<td><c:out value="${instate.state}"/></td>
@@ -112,7 +139,7 @@
     	<tbody>
         	<c:forEach items="${outofstate}" var="outofstate">
         	<tr>
-            	<td><a href="/events/${outofstate.id}"><c:out value="${outofstate.name}"/></a></td>
+            	<td><a class="btn btn-secondary" href="/events/${outofstate.id}"><c:out value="${outofstate.name}"/></a></td>
             	<td><c:out value="${outofstate.date}"/></td>
             	<td><c:out value="${outofstate.location}"/></td>
             	<td><c:out value="${outofstate.state}"/></td>
@@ -144,6 +171,7 @@
 	</table>
 	</div>
 	<br>
-	<a href="/events/new">Create Event</a>
+	<a class="btn btn-secondary" href="/events/new">Create Event</a>
+	</div>
 </body>
 </html>

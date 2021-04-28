@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="ISO-8859-1">
-	<title>New Event</title>
+	<title>Edit Event</title>
 	<style type="text/css">	
 		* {
 			margin: 0;
@@ -78,8 +78,11 @@
 		<img id="logo" src="/images/eventplannerlogo.png" alt="logo"/>
 	</header>
 	<div id="wrapper">
-	<h1>Create a new event!</h1>
-	<form:form action="/newEvent" method="post" modelAttribute="event">
+	<div id="formform">
+	<h1><c:out value="${event.name}"/></h1>
+	<br>
+	<h3>Edit Event</h3>
+	<form:form action="/updateEvent/${event.id}" method="post" modelAttribute="event">
     	<p>
         	<form:label class="form-label" path="name">Name</form:label>
         	<form:input class="form-control" path="name"/>
@@ -104,9 +107,10 @@
         		</c:forEach>
         	</form:select>
         </p>
-		<form:hidden path="user" value="${user.id}"/>
+		<form:hidden path="user" value="${event.user.id}"/>
     	<input id="submit_button" class="btn btn-secondary" type="submit" value="Submit"/>
-	</form:form>   
+	</form:form>  
+	</div> 
 	</div>
 </body>
 </html>
