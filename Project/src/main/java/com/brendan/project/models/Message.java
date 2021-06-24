@@ -46,9 +46,6 @@ public class Message {
 	@JoinColumn(name="event_id")
 	private Event event;
 	
-	public Message() {
-	}	
-	
 	public Message(String words, User user, Event event) {
 		this.words = words;
 		this.user = user;
