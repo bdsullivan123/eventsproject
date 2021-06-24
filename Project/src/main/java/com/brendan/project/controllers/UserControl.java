@@ -52,6 +52,7 @@ public class UserControl {
     @RequestMapping("/")
     public String login(@ModelAttribute("user") User user, Model model) {
 		model.addAttribute("states", states);
+		
         return "index.jsp";
     }
     
