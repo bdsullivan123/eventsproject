@@ -56,9 +56,10 @@ public class UserControl {
     }
     
     @RequestMapping(value="/registration", method=RequestMethod.POST)
-    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session) {
+    public String registerUser(@Valid @ModelAttribute("user") User user, BindingResult result, HttpSession session, Model model) {
         userValidator.validate(user, result);
     	if(result.hasErrors()) {
+    		model.addAttribute("states", states);
     		return "index.jsp";
     	} else {
     		userService.registerUser(user);

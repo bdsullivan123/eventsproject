@@ -59,9 +59,6 @@ public class User {
     @OneToMany(mappedBy="user", fetch = FetchType.LAZY)
 	private List<Message> messages;
     
-    public User() {
-    }
-    
     public User(String email, String firstName, String lastName, String password, String passwordConfirmation, String location, String state) {
 		this.firstName = firstName;
 		this.lastName = lastName;

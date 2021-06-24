@@ -66,8 +66,6 @@ public class Event {
     @OneToMany(mappedBy="event", fetch = FetchType.LAZY)
 	private List<Message> messages;
     
-    public Event() {}
-
 	public Event(String name, String location, String date, String state) {
 		this.name = name;
 		this.location = location;

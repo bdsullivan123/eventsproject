@@ -44,8 +44,6 @@ public class UserEvent {
 		this.updatedAt = new Date();
 	}
 	
-	public UserEvent() {}
-
 	public Long getId() {
 		return id;
 	}
